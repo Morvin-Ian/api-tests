@@ -31,13 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'rest_framework',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-'accounts',
+
+    'accounts.apps.AccountsConfig',
+    'blog.apps.BlogConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -82,6 +88,14 @@ DATABASES = {
 }
 
 
+
+REST_FRAMEWORK = {
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'accounts.api.json_web_tokens.JWTAuthentication'
+      ],
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -113,10 +127,16 @@ USE_I18N = True
 USE_TZ = True
 
 
+AUTH_USER_MODEL = "accounts.User" 
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -124,9 +144,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/static')
-]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
