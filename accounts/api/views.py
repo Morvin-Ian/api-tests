@@ -1,18 +1,13 @@
 from django.contrib import auth
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_protect 
 from django.db.models import Q
 
 from .serializer import  RegisterSerializer, LoginSerializer
-from accounts.models import User
 
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.parsers import  MultiPartParser,FormParser
 
-csrf_protect_method = method_decorator(csrf_protect)
 
 class RegistrationView(GenericAPIView):
     """
@@ -50,14 +45,12 @@ class LoginView(GenericAPIView):
         
         
 
-class AuthenticationView(GenericAPIView):
+class LogoutView(GenericAPIView):
     """
-    Authenticating users with tokens
+    Logging out users
     """
-    permission_classes = [ IsAuthenticated]
-    serializer_class = RegisterSerializer
+    permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        user = request.user
-        serializer = self.serializer_class(user)
-        return Response({"user":serializer.data})
+    def get(self, request, format=None):
+        auth.logout(request) 
+        return Response("Logged out successfully", status=status.HTTP_204_NO_CONTENT)

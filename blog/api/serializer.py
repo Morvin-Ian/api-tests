@@ -9,11 +9,12 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = (
+            'id',
+            'author', 
             'title', 
             'content', 
-            'author', 
             'created_at', 
         )
-        read_only_fields = ['created_at']
+        read_only_fields = ['id', 'author','created_at']
 
         

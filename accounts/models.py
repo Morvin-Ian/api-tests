@@ -108,7 +108,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         payload = {
             'username': self.username,
             'email': self.email,
-            'exp': datetime.utcnow() + timedelta(hours=24),
+            'exp': datetime.utcnow() + timedelta(hours=1),
         }
         
         token = jwt.encode(payload, settings.SECRET_KEY, algorithm='HS256')
