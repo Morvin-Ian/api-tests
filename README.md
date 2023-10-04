@@ -29,7 +29,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 4. Navigate to the settings.py file in the project folder and set USING_DOCKER attribute to False
     ```
         # settings.py
-        USING_DOCKER = False
+        USE_REDIS = False
     ```
 5. python manage.py createcachetable
 
@@ -40,6 +40,6 @@ Before begining, make sure the following prerequisites are installed on your sys
 1. Navigate to the settings.py file in the project folder and set USING_DOCKER attribute to False
     ```
         # settings.py
-        USING_DOCKER = False
+        USE_REDIS = False
     ```
 2. python manage.py test

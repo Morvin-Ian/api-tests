@@ -95,9 +95,9 @@ REST_FRAMEWORK = {
       ],
 }
 
-USING_DOCKER = True
+USE_REDIS = True
 
-if USING_DOCKER:
+if USE_REDIS:
     CACHES = {
             "default": {
                 "BACKEND": "django_redis.cache.RedisCache",
