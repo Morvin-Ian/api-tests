@@ -1,5 +1,6 @@
 
 from django.http import Http404
+from django.core.cache import cache
 
 from .serializer import  BlogSerializer
 from blog.models import Blog
@@ -34,8 +35,12 @@ class BlogDetailView(APIView):
 
     def get_object(self, pk):
         try:
+            blog = cache.get(f"blog_{pk}")
+            if not blog:
+                blog = Blog.objects.get(pk=pk)
+                cache.set(f"blog_{pk}", blog, 600)
 
-            return Blog.objects.get(pk=pk)
+            return blog
         except Blog.DoesNotExist:
                 raise Http404
 
@@ -55,7 +60,13 @@ class BlogCreateView(APIView):
     def post(self, request, format=None):
         serializer = BlogSerializer(data=request.data)
         if serializer.is_valid():
-            blog = Blog.objects.create(title=request.data["title"], content=request.data["content"], author=request.user) 
+            blog = Blog.objects.create(
+                    title=request.data["title"], 
+                    content=request.data["content"], 
+                    author=request.user
+                )
+             
+            cache.set(f"blog_{blog.id}", blog, 600)
             serializer = BlogSerializer(blog)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
@@ -70,7 +81,13 @@ class BlogUpdateDeleteView(APIView):
 
     def get_object(self, pk):
         try:
-            return Blog.objects.get(pk=pk)
+            blog = cache.get(f"blog_{pk}")
+
+            if not blog:
+                blog = Blog.objects.get(pk=pk)
+                cache.set(f"blog_{pk}", blog, 600)
+
+            return blog
         except Blog.DoesNotExist:
                 raise Http404
 
@@ -79,7 +96,12 @@ class BlogUpdateDeleteView(APIView):
         serializer = BlogSerializer(blog, data=request.data)
         if serializer.is_valid():
             if request.user == blog.author:
-                serializer.save()
+                updated_blog = serializer.save()
+
+                if cache.get(f"blog_{pk}") is not None:
+                    cache.delete(f"blog_{pk}")
+                    cache.set(f"blog_{pk}", updated_blog, 600)
+                    
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response("Not authorized to edit", status=status.HTTP_403_FORBIDDEN)                
@@ -89,6 +111,8 @@ class BlogUpdateDeleteView(APIView):
         blog = self.get_object(pk)
         if request.user == blog.author:
             blog.delete()
+            if cache.get(f"blog_{pk}") is not None:
+                cache.delete(f"blog_{pk}")
             return Response("Deleted successfully",status=status.HTTP_204_NO_CONTENT)
         else:
             return Response("Not authorized to delete", status=status.HTTP_403_FORBIDDEN)   
