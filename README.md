@@ -26,7 +26,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 
 3. python manage.py migrate
 
-4. Navigate to the settings.py file in the project folder and set USING_DOCKER attribute to False
+4. Navigate to the settings.py file in the project folder and set USE_REDIS attribute to False
     ```
         # settings.py
         USE_REDIS = False
@@ -37,7 +37,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 
 
 ## Running Tests
-1. Navigate to the settings.py file in the project folder and set USING_DOCKER attribute to False
+1. Navigate to the settings.py file in the project folder and set USE_REDIS attribute to False
     ```
         # settings.py
         USE_REDIS = False
