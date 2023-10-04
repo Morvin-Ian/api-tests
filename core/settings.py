@@ -97,12 +97,14 @@ REST_FRAMEWORK = {
 
 
 CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "Blog_Cache_table",
-    }
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://redis:6379/",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient"
+            },
+        }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

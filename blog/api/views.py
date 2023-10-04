@@ -1,6 +1,7 @@
-
 from django.http import Http404
+from django.conf import settings
 from django.core.cache import cache
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
 
 from .serializer import  BlogSerializer
 from blog.models import Blog
@@ -11,6 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 class BlogListView(APIView):
     """
@@ -38,7 +40,7 @@ class BlogDetailView(APIView):
             blog = cache.get(f"blog_{pk}")
             if not blog:
                 blog = Blog.objects.get(pk=pk)
-                cache.set(f"blog_{pk}", blog, 600)
+                cache.set(f"blog_{pk}", blog, CACHE_TTL)
 
             return blog
         except Blog.DoesNotExist:
@@ -66,7 +68,7 @@ class BlogCreateView(APIView):
                     author=request.user
                 )
              
-            cache.set(f"blog_{blog.id}", blog, 600)
+            cache.set(f"blog_{blog.id}", blog, CACHE_TTL)
             serializer = BlogSerializer(blog)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
@@ -85,7 +87,7 @@ class BlogUpdateDeleteView(APIView):
 
             if not blog:
                 blog = Blog.objects.get(pk=pk)
-                cache.set(f"blog_{pk}", blog, 600)
+                cache.set(f"blog_{pk}", blog, CACHE_TTL)
 
             return blog
         except Blog.DoesNotExist:
@@ -100,12 +102,13 @@ class BlogUpdateDeleteView(APIView):
 
                 if cache.get(f"blog_{pk}") is not None:
                     cache.delete(f"blog_{pk}")
-                    cache.set(f"blog_{pk}", updated_blog, 600)
+                    cache.set(f"blog_{pk}", updated_blog, CACHE_TTL)
                     
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 return Response("Not authorized to edit", status=status.HTTP_403_FORBIDDEN)                
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     def delete(self, request, pk, format=None):
         blog = self.get_object(pk)

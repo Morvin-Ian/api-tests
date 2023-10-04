@@ -35,10 +35,11 @@ class LoginView(GenericAPIView):
     serializer_class = LoginSerializer
 
     def post(self, request, format=None):
-        user = auth.authenticate(email=request.data['email'], password=request.data['password'])      
-        if user is not None:
-            serializer = self.serializer_class(user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+        if request.data.get('email') and request.data.get('password'):
+            user = auth.authenticate(email=request.data['email'], password=request.data['password'])      
+            if user is not None:
+                serializer = self.serializer_class(user)
+                return Response(serializer.data, status=status.HTTP_200_OK)
 
         else:
             return Response("Invalid Credentials", status=status.HTTP_401_UNAUTHORIZED)
