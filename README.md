@@ -23,6 +23,6 @@
         # settings.py
         USING_DOCKER = False
     ```
-5. python3 manage.py createcachetable
+5. python manage.py createcachetable
 
 6. python manage.py runserver
