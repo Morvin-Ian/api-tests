@@ -108,7 +108,7 @@ Before begining, make sure the following prerequisites are installed on your sys
     ```
 ![update](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/f88925a6-c840-4cad-9457-bf966043958d)
 
-5. Delete a Blog (four arguments - blog_id, token)
+5. Delete a Blog (two arguments - blog_id, token)
 
     ```
         python manage.py update <blog_id> 'token'
