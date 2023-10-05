@@ -55,8 +55,8 @@ I. Registration (three arguments - username, email, password)
     ```
         python manage.py register 'username' 'email' 'password'
 
-    ```
-    ![register](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/81d720ed-d029-428a-ae6b-fe94e812334d)
+    ```    
+![register](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/81d720ed-d029-428a-ae6b-fe94e812334d)
 
 II. Login (two arguments - username, email, password) 
 
