@@ -54,7 +54,7 @@ I. Registration (three arguments - username, email, password)
   
     ```
         python manage.py register 'username' 'email' 'password'
-
+        
     ```
 
 
@@ -88,15 +88,12 @@ II. Fetch A single the Blog (single argument - blog_id)
     ```
         python manage.py fetchblog <blog_id>
 
-
-
     ```
 
 III. Create a new Blog (three arguments - title, content, token)
 
     ```
         python manage.py create 'title' 'content' 'token'
-
 
     ```
 
@@ -105,13 +102,11 @@ IV. Update a Blog (four arguments - blog_id, title, content, token)
     ```
         python manage.py update <blog_id> 'title' 'content' 'token'
 
-
     ```
 
 V. Delete a Blog (four arguments - blog_id, token)
 
     ```
         python manage.py update <blog_id> 'token'
-
 
     ```
