@@ -73,7 +73,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 3. Logout (single argument - token)
 
     ```
-        python manage.py login 'token'
+        python manage.py logout 'token'
 
     ```
 
