@@ -1,4 +1,4 @@
-# MiniBloggingApp-test
+# MiniBloggingApp-test Setup
 
 ## Prerequisites
 
