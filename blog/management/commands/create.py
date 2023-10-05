@@ -3,7 +3,7 @@ import requests
 import json
 
 class Command(BaseCommand):
-    help = "Consume the Fetch Single Blog API"
+    help = "Consume the Create Blog API"
 
     def add_arguments(self, parser):
         parser.add_argument('title', type=str, help='The title of the blog')

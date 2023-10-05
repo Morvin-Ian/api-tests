@@ -18,7 +18,7 @@ class Command(BaseCommand):
         data = {
             "username":kwargs['username'],
             "email":kwargs['email'],
-            "password":"12345678"
+            "password":kwargs['password']
         }
 
         response = requests.post(api_url, json.dumps(data), headers=headers)

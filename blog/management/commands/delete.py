@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 import requests
 
 class Command(BaseCommand):
-    help = "Consume the Fetch Single Blog API"
+    help = "Consume the Delete Single Blog API"
 
     def add_arguments(self, parser):
         parser.add_argument('id', type=int, help='The pk of the blog')
