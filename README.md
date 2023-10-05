@@ -47,7 +47,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 ## Consuming the Api through the console command
 ### Authentication
 ```
-  Always note the token and copy it as you will use it to manipulate blogcerate, delete, or update blogs.
+  Always note the token and copy it as you will use it to create, delete, or update blogs.
 ```
 
 I. Registration (three arguments - username, email, password) 
