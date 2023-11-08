@@ -1,4 +1,9 @@
-# MiniBloggingApp-test Setup
+# Project Setup
+
+## Details
+1. JWT Auth
+2. API Testing
+3. Custom commands
 
 ## Prerequisites
 
@@ -60,7 +65,6 @@ Before begining, make sure the following prerequisites are installed on your sys
 
     ```  
     
-![register](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/81d720ed-d029-428a-ae6b-fe94e812334d)
 
 2. Login (two arguments - username, email, password) 
 
@@ -68,7 +72,6 @@ Before begining, make sure the following prerequisites are installed on your sys
         python manage.py register 'email' 'password'
 
     ```
-![login](https://github.com/Morvin-Ian/api-tests/assets/78966128/618cd6a5-9ae0-4e76-a552-0b5889afb2b4)
 
 3. Logout (single argument - token)
 
@@ -84,21 +87,18 @@ Before begining, make sure the following prerequisites are installed on your sys
     ```
         python manage.py fetchblogs
     ```
-![fetchall](https://github.com/Morvin-Ian/api-tests/assets/78966128/ac4808a6-b2fe-4505-a164-dd4d76e11083)
 
 2. Fetch A single the Blog (single argument - blog_id)
 
     ```
         python manage.py fetchblog <blog_id>
     ```
-![fetchsingle](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/6c3260d4-80a1-419e-9672-b1dad4beedc6)
 
 3. Create a new Blog (three arguments - title, content, token)
 
     ```
         python manage.py create 'title' 'content' 'token'
     ```
-![create](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/56a6e544-86ab-4bcb-b5d9-03cd1c291561)
 
 4. Update a Blog (four arguments - blog_id, title, content, token)
 
@@ -106,13 +106,11 @@ Before begining, make sure the following prerequisites are installed on your sys
         python manage.py update <blog_id> 'title' 'content' 'token'
 
     ```
-![update](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/f88925a6-c840-4cad-9457-bf966043958d)
 
 5. Delete a Blog (two arguments - blog_id, token)
 
     ```
         python manage.py update <blog_id> 'token'
     ```
-![delete](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/d0f613b8-c0e6-40f2-8b24-d4adeb657f36)
 
     
