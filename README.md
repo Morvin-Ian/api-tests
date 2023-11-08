@@ -68,7 +68,7 @@ Before begining, make sure the following prerequisites are installed on your sys
         python manage.py register 'email' 'password'
 
     ```
-![login](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/618cd6a5-9ae0-4e76-a552-0b5889afb2b4)
+![login](https://github.com/Morvin-Ian/api-tests/assets/78966128/618cd6a5-9ae0-4e76-a552-0b5889afb2b4)
 
 3. Logout (single argument - token)
 
@@ -84,7 +84,7 @@ Before begining, make sure the following prerequisites are installed on your sys
     ```
         python manage.py fetchblogs
     ```
-![fetchall](https://github.com/Morvin-Ian/MiniBloggingApp-test/assets/78966128/ac4808a6-b2fe-4505-a164-dd4d76e11083)
+![fetchall](https://github.com/Morvin-Ian/api-tests/assets/78966128/ac4808a6-b2fe-4505-a164-dd4d76e11083)
 
 2. Fetch A single the Blog (single argument - blog_id)
 
