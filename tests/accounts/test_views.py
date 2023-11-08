@@ -28,7 +28,6 @@ class RegistrationViewTest(TestCase):
         self.assertFalse(User.objects.filter(email=self.data['email']).exists())
 
 
-
 class LoginViewTest(TestConfig):
     def test_sucessful_login(self):
         reponse = self.client.post(
