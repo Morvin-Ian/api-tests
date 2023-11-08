@@ -28,7 +28,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 
 ### Option 2 - Without Docker
 
-1. git clone git@github.com:Morvin-Ian/MiniBloggingApp-test.git
+1. git clone `url`
 
 2. pip install -r requirements.txt 
 
