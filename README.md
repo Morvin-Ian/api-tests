@@ -18,7 +18,7 @@ Before begining, make sure the following prerequisites are installed on your sys
 
 ### Option 1 - Using Docker
 
-1. git clone git@github.com:Morvin-Ian/MiniBloggingApp-test.git
+1. git clone `url`
 
 2. python manage.py migrate
 
